@@ -11,6 +11,8 @@ class CreateTagihan extends CreateRecord
 {
     protected static string $resource = TagihanResource::class;
 
+    protected static bool $canCreateAnother = false;
+
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         $data['created_by'] = Auth::id() ?? 1;

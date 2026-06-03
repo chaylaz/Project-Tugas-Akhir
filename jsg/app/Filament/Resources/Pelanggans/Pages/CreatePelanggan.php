@@ -12,6 +12,8 @@ class CreatePelanggan extends CreateRecord
 {
     protected static string $resource = PelangganResource::class;
 
+    protected static bool $canCreateAnother = false;
+
     protected function afterCreate(): void
     {
         $pelanggan = $this->record;
