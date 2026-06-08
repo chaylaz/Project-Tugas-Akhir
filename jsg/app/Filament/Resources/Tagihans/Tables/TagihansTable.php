@@ -131,23 +131,10 @@ class TagihansTable
                     }) // Menampilkan aksi ini hanya jika status_pembayaran adalah 'belum'
                     ->action(function ($record) {
 
-                        // Ubah status tagihan menjadi lunas
+                        // Ubah status tagihan menjadi lunas (ini memicu model event di Tagihan.php)
                         $record->update([
                             'status_pembayaran' => 'lunas',
                         ]);
-
-                        // Cek apakah masih ada tagihan yang belum lunas
-                        $masihAda = TagihanModel::where('pelanggan_id', $record->pelanggan_id)
-                            ->where('status_pembayaran', 'belum')
-                            ->exists();
-
-                        // Jika tidak ada tagihan belum lunas, aktifkan pelanggan dan perbarui masa aktif
-                        if (!$masihAda && $record->pelanggan) {
-                            $record->pelanggan->update([
-                                'status_layanan' => 'aktif',
-                                'masa_aktif' => $record->due_date,
-                            ]);
-                        }
 
                         // Kirim notifikasi bahwa tagihan telah dilunasi
                         Notification::make()

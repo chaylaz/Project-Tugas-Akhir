@@ -59,21 +59,9 @@ class CheckMasaAktifPelanggan extends Command
 
             $this->info("Masa aktif pelanggan {$pelanggan->nama} sudah habis pada {$masaAktif->toDateString()}.");
 
-            $tagihanExist = Tagihan::where('pelanggan_id', $pelanggan->id)
-                ->where('periode', $periode)
-                ->first();
+            $tagihanExist = Tagihan::generateForPelanggan($pelanggan, $masaAktif);
 
-            if (! $tagihanExist) {
-                Tagihan::create([
-                    'pelanggan_id' => $pelanggan->id,
-                    'paket_layanan_id' => $pelanggan->paket_layanan_id,
-                    'created_by' => $adminId,
-                    'periode' => $periode,
-                    'jumlah' => $pelanggan->paket?->harga ?? 0,
-                    'due_date' => $masaAktif->toDateString(),
-                    'status_pembayaran' => 'belum',
-                ]);
-
+            if ($tagihanExist->wasRecentlyCreated) {
                 Pelanggan::whereKey($pelanggan->id)->update([
                     'status_layanan' => 'non-aktif',
                 ]);
@@ -96,7 +84,7 @@ class CheckMasaAktifPelanggan extends Command
             }
 
             if ($tagihanExist->status_pembayaran === 'lunas') {
-                $masaAktifBaru = $today->copy()->addMonth()->toDateString();
+                $masaAktifBaru = $masaAktif->copy()->addMonth()->toDateString();
 
                 Pelanggan::whereKey($pelanggan->id)->update([
                     'status_layanan' => 'aktif',

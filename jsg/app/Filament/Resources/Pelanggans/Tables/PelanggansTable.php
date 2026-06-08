@@ -53,6 +53,7 @@ class PelanggansTable
                     ->dateTime('d M Y H:i')
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->defaultSort('masa_aktif', 'asc')
             ->recordActions([
                 EditAction::make(),
                 DeleteAction::make(),

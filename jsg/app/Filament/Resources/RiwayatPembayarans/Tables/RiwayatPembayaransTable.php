@@ -40,6 +40,7 @@ class RiwayatPembayaransTable
                     ->label('Dilunasi Pada')
                     ->dateTime('d M Y H:i'),
             ])
+            ->defaultSort('updated_at', 'desc')
             ->recordActions([])
             ->toolbarActions([]);
     }
