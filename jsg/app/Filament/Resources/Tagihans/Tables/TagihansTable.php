@@ -7,6 +7,7 @@ use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Placeholder;
 use Filament\Schemas\Components\Section;
@@ -142,6 +143,11 @@ class TagihansTable
                             ->success()
                             ->send();
                     }),
+             ])
+            ->filters([
+                SelectFilter::make('paket_layanan_id')
+                    ->label('Paket Layanan')
+                    ->relationship('paket', 'nama_paket'),
             ])
             ->toolbarActions([
                 //
