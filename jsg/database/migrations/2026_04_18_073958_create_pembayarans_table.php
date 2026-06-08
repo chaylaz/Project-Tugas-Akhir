@@ -11,22 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pembayaran', function (Blueprint $table) {
-    $table->id();
+        if (! Schema::hasTable('pembayaran')) {
+            Schema::create('pembayaran', function (Blueprint $table) {
+                $table->id();
 
-    $table->foreignId('tagihan_id')
-          ->constrained('tagihan')
-          ->onDelete('cascade');
+                $table->foreignId('tagihan_id')
+                    ->constrained('tagihan')
+                    ->onDelete('cascade');
 
-    $table->dateTime('tanggal_pembayaran');
-    $table->enum('metode', ['cash', 'transfer', 'midtrans']);
-    $table->decimal('jumlah_bayar', 12, 2);
+                $table->dateTime('tanggal_pembayaran');
+                $table->enum('metode', ['cash', 'transfer', 'midtrans']);
+                $table->decimal('jumlah_bayar', 12, 2);
 
-    $table->string('midtrans_order_id')->nullable();
-    $table->string('midtrans_status')->nullable();
+                $table->string('midtrans_order_id')->nullable();
+                $table->string('midtrans_status')->nullable();
 
-    $table->timestamps();
-});
+                $table->timestamps();
+            });
+        }
     }
 
     /**
