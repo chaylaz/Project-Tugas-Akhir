@@ -18,7 +18,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://project-tugas-akhir-1tmy.vercel.app",
+        "APP_URL": "",
         "APP_KEY": "base64:ihsgx4/x2XweSFzQfo/KPPNtYLvvbO9U5DDV1duzOWQ=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
