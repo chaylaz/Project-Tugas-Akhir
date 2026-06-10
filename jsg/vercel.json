@@ -33,6 +33,7 @@
         "DB_HOST": "zvfp8b.h.filess.io",
         "DB_PORT": "3307",
         "DB_DATABASE": "jsg_website_problembat",
-        "DB_USERNAME": "jsg_website_problembat"
+        "DB_USERNAME": "jsg_website_problembat",
+        "DB_PASSWORD": "0f898d19d2bd6702f8c586bbef5e7f67f0b51e44"
     }
 }
