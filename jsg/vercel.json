@@ -5,20 +5,13 @@
         "api/index.php": { "runtime": "vercel-php@0.6.2" }
     },
     "routes": [
-        { "src": "/build/(.*)", "dest": "/public/build/$1" },
-        { "src": "/vendor/(.*)", "dest": "/public/vendor/$1" },
-        { "src": "/css/(.*)", "dest": "/public/css/$1" },
-        { "src": "/js/(.*)", "dest": "/public/js/$1" },
-        { "src": "/livewire/(.*)", "dest": "/public/livewire/$1" },
         { "src": "/(.*)", "dest": "/api/index.php" }
     ],
-    "public": true,
-    "buildCommand": "npm install && npx vite build",
-    "outputDirectory": "public",
+
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "",
+        "APP_URL": "https://project-tugas-akhir-1tmy.vercel.app/admin",
         "APP_KEY": "base64:ihsgx4/x2XweSFzQfo/KPPNtYLvvbO9U5DDV1duzOWQ=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
