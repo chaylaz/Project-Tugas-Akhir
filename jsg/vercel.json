@@ -6,6 +6,7 @@
     },
     "routes": [
         { "src": "/build/(.*)", "dest": "/public/build/$1" },
+        { "src": "/vendor/(.*)", "dest": "/public/vendor/$1" },
         { "src": "/css/(.*)", "dest": "/public/css/$1" },
         { "src": "/js/(.*)", "dest": "/public/js/$1" },
         { "src": "/livewire/(.*)", "dest": "/public/livewire/$1" },
@@ -13,11 +14,10 @@
     ],
     "public": true,
     "buildCommand": "npm install && npx vite build",
-    "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",
-        "APP_URL": "https://yourproductionurl.com",
+        "APP_URL": "https://project-tugas-akhir-1tmy.vercel.app",
         "APP_KEY": "base64:TGaVaXwhWgjn9akhE4SCSIjGG/cQqvICUQ+PgLA3Bs0=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
