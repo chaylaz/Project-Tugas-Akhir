@@ -12,13 +12,14 @@
         { "src": "/livewire/(.*)", "dest": "/public/livewire/$1" },
         { "src": "/(.*)", "dest": "/api/index.php" }
     ],
+    "public": true,
     "buildCommand": "npm install && npx vite build",
     "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
         "APP_URL": "",
-        "APP_KEY": "base64:AKlUmvXlU0OKXMHemsj9RconTkorNSN77+ozwU7i+88=",
+        "APP_KEY": "base64:ihsgx4/x2XweSFzQfo/KPPNtYLvvbO9U5DDV1duzOWQ=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
