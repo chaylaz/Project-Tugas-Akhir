@@ -16,12 +16,8 @@ class PelangganForm
             ->components([
                 TextInput::make('nama')
                     ->required(),
-                TextInput::make('nik')
-                    ->label('NIK')
-                    ->required(),
                 Textarea::make('alamat')
-                    ->required()
-                    ->columnSpanFull(),
+                    ->required(),
                 TextInput::make('no_telepon')
                     ->tel()
                     ->required(),
@@ -30,7 +26,7 @@ class PelangganForm
                     ->relationship('paket', 'nama_paket')
                     ->required(),
                 Select::make('status_layanan')
-                    ->options(['aktif' => 'Aktif', 'non-aktif' => 'Non aktif', 'cutoff' => 'Cutoff'])
+                    ->options(['aktif' => 'Aktif', 'non-aktif' => 'Non aktif'])
                     ->default('aktif')
                     ->required(),
                 DatePicker::make('masa_aktif')

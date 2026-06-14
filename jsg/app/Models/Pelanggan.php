@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Pelanggan extends Model
 {
@@ -12,7 +13,6 @@ class Pelanggan extends Model
 
     protected $fillable = [
         'nama',
-        'nik',
         'alamat',
         'no_telepon',
         'paket_layanan_id',
@@ -32,5 +32,13 @@ class Pelanggan extends Model
     public function tagihan(): HasMany
     {
         return $this->hasMany(Tagihan::class, 'pelanggan_id');
+    }
+
+    /**
+     * Relasi ke user (akun login pelanggan).
+     */
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class, 'pelanggan_id');
     }
 }

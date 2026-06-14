@@ -21,10 +21,6 @@ class PelanggansTable
                     ->searchable()
                     ->sortable(),
 
-                TextColumn::make('nik')
-                    ->label('NIK')
-                    ->searchable()
-                    ->sortable(),
 
                 TextColumn::make('alamat')
                     ->label('Alamat')

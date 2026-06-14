@@ -42,6 +42,7 @@ class CreatePelanggan extends CreateRecord
 
         $adminId = User::orderBy('id')->first()?->id ?? 1;
 
+        // Buat tagihan pertama otomatis
         Tagihan::firstOrCreate(
             [
                 'pelanggan_id' => $pelanggan->id,
@@ -56,6 +57,7 @@ class CreatePelanggan extends CreateRecord
             ]
         );
 
+        // Update status layanan dan masa aktif
         $pelanggan->update([
             'status_layanan' => 'non-aktif',
             'masa_aktif' => $today->toDateString(),

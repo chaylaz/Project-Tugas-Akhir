@@ -71,7 +71,7 @@ class TagihansTable
                                             
                                         Placeholder::make('nik')
                                             ->label('NIK')
-                                            ->content(fn ($record) => $record->pelanggan->nik ?? '-'),
+                                            ->content(fn ($record) => $record->pelanggan?->user?->nik ?? '-'),
                                             
                                         Placeholder::make('alamat')
                                             ->label('Alamat')
