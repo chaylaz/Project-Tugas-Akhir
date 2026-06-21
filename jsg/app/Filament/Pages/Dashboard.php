@@ -91,7 +91,7 @@ class Dashboard extends BaseDashboard
 
                     $tagihans = $query->orderBy('updated_at', 'asc')->get();
                     $totalPendapatan = $tagihans->sum('jumlah');
-                    $downloadTime = now()->format('d-m-Y H:i');
+                    $downloadTime = now('Asia/Jakarta')->format('d-m-Y H:i');
 
                     $pdf = Pdf::loadView('exports.laporan-pendapatan', [
                         'tagihans' => $tagihans,
