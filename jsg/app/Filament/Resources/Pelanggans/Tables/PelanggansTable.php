@@ -38,7 +38,6 @@ class PelanggansTable
                     ->color(fn ($state) => match ($state) {
                         'aktif' => 'success',
                         'non-aktif' => 'danger',
-                        'cutoff' => 'warning',
                         default => 'gray',
                     }),
 
@@ -61,7 +60,6 @@ class PelanggansTable
                     ->options([
                         'aktif' => 'Aktif',
                         'non-aktif' => 'Non Aktif',
-                        'cutoff' => 'Cut Off',
                     ]),
             ])
             ->recordActions([
