@@ -14,8 +14,6 @@ class Pembayaran extends Model
         'tanggal_pembayaran',
         'metode',
         'jumlah_bayar',
-        'midtrans_order_id',
-        'midtrans_status',
     ];
 
     protected $casts = [
