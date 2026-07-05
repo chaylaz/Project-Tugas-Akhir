@@ -41,4 +41,23 @@ class Pelanggan extends Model
     {
         return $this->hasOne(User::class, 'pelanggan_id');
     }
+
+    protected static function booted(): void
+    {
+        static::updated(function (Pelanggan $pelanggan): void {
+            // Jika paket layanan berubah, update semua tagihan yang belum lunas
+            if ($pelanggan->wasChanged('paket_layanan_id')) {
+                $paketBaru = $pelanggan->paket;
+
+                if ($paketBaru) {
+                    $pelanggan->tagihan()
+                        ->where('status_pembayaran', 'belum')
+                        ->update([
+                            'paket_layanan_id' => $paketBaru->id,
+                            'jumlah' => $paketBaru->harga,
+                        ]);
+                }
+            }
+        });
+    }
 }
